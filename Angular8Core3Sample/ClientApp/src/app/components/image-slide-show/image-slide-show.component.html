@@ -1,0 +1,141 @@
+
+  <div class="slideShowWrapper">
+
+    <div class="slideWrapper" *ngIf="images?.length > 0">
+
+      <div #previousSlide class="slide previousSlide" [@slideImage]="slidePreviousImage ? 'slideRight' : 'previousImage'"
+           (@slideImage.done)="slidePreviousImageDone($event)">
+
+        <img src="{{ images[previousIndex].source }}" style="width:99%" />
+      </div>
+
+
+      <div class="scrollButtons" *ngIf="showButtons">
+        <div class="leftScrollBtn">
+          <button pButton type="button" icon="pi pi-arrow-circle-left" class="ui-button-rounded ui-button-secondary"
+                  (click)="leftButtonClick()" style="font-size: 1.5em;"></button>
+        </div>
+        <div class="rightScrollBtn">
+          <button pButton type="button" icon="pi pi-arrow-circle-right" class="ui-button-rounded ui-button-secondary"
+                  (click)="rightButtonClick()" style="font-size: 1.5em;"></button>
+        </div>
+      </div>
+
+
+      <div #currentSlide class="slide currentSlide" [@slideImage]="slideCurrentImage ? 'slideCurrent' : 'currentImage'">
+        <div (click)="showLightBox()">
+          <img src="{{ images[currentIndex].source }}" style="width:99%" (load)="currentImageLoaded()" />
+        </div>
+      </div>
+
+      <div #nextSlide class="slide nextSlide" [@slideImage]="slideNextImage ? 'slideLeft' : 'nextImage'"
+           (@slideImage.done)="slideNextImageDone($event)">
+
+        <div (click)="showLightBox()">
+          <img src="{{ images[nextIndex].source }}" style="width:99%" />
+        </div>
+      </div>
+
+    </div>
+
+    <div class="titleWrapper" *ngIf="images?.length > 0">
+      <div class="row topMargin">
+
+        <div class="col-md-2">
+          <div class="text-center">
+            <i (click)="playSlideShowBtn()" *ngIf="!slideShowSubscription || slideShowSubscription.closed"
+               class="fas fa-play" style="font-size:1.5em;cursor:pointer;"></i>
+
+            <i (click)="pauseSlideShowBtn()" *ngIf="slideShowSubscription && !slideShowSubscription.closed"
+               class="fas fa-pause" style="font-size:1.5em;cursor:pointer;"></i>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="fontSize12em" [innerHtml]="getSafeHTML(images[currentIndex].title)"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="lightbox" #lightBox *ngIf="lightBox">
+      <div class="w-100 overflow-hidden d-inline-block mt-2" style="max-width:1350px;">
+
+        <div class="lightBoxImageWrapper">
+          <div class="d-inline-block lightboxImage previousImage"
+                [@slideImage]="slidePreviousLightBoxImage ? 'slideRight' : 'previousImage'"
+                (@slideImage.done)="slidePreviousImageDone($event)">
+
+            <img src="{{ images[previousIndex].source }}" style="width:100%" />
+          </div>
+
+          <div class="d-inline-block lightboxImage currentImage">
+
+            <img src="{{ images[currentIndex].source }}" style="width:100%" (load)="currentLightBoxImageLoaded()" />
+            <i (click)="hideLightBox()" class="lightBoxClose fas fa-times" style="color:darkred;"></i>
+          </div>
+
+          <div class="d-inline-block lightboxImage nextImage"
+                [@slideImage]="slideNextLightBoxImage ? 'slideLeft' : 'nextImage'"
+                (@slideImage.done)="slideNextImageDone($event)">
+
+            <img src="{{ images[nextIndex].source }}" style="width:100%" />
+          </div>
+        </div>
+
+        <div class="row topMargin">
+          <div class="col-md-3">
+            <i (click)="playLightBoxSlideShowBtn()" *ngIf="!lightBoxSlideShowSubscription || lightBoxSlideShowSubscription.closed"
+                class="lightboxbuttons fas fa-play"></i>
+
+            <i (click)="pauseLightBoxSlideShowBtn()" *ngIf="lightBoxSlideShowSubscription && !lightBoxSlideShowSubscription.closed"
+                class="lightboxbuttons fas fa-pause"></i>
+
+            <span style="margin-left:40px;"></span>
+
+            <i [class.disabled]="disableLightBoxButtons" (click)="leftLightBoxButtonClick()" class="lightboxbuttons fas fa-arrow-left"></i>
+
+            <span class="lightboxText">{{ currentIndex + 1 }} / {{ images.length }}</span>
+
+            <i [class.disabled]="disableLightBoxButtons" (click)="rightLightBoxButtonClick()" class="lightboxbuttons fas fa-arrow-right"></i>
+          </div>
+
+          <div class="col-md-7">
+            <div class="colorWhite fontSize12em" [innerHtml]="getSafeHTML(images[currentIndex].title)"></div>
+          </div>
+
+          <div class="col-md-2">
+            <button pButton type="button" (click)="hideLightBox()" label="Close" icon="fas fa-times" class="float-right ui-button-danger"
+                    style="font-size:1.2em;margin-right:20px;"></button>
+          </div>
+
+        </div>
+
+        <div class="row mt-4 mb-2">
+          <div class="offset-md-2 col-md-8">
+
+            <table style="margin: 0 auto;">
+              <tr>
+                <td>
+                  <i [class.disabled]="images.indexOf(thumbnailImages[0]) === 0" (click)="leftThumbnailButtonClick()"
+                      class="lightboxThumbnailButtons fas fa-caret-left"></i>
+                </td>
+                <td *ngFor="let image of thumbnailImages" (click)="thumbnailButtonClick(image)">
+                  <img class="lightboxThumbnail" src="{{ image.source }}" [class.selectedthumbnail]="images.indexOf(image) === currentIndex" />
+                </td>
+                <td>
+                  <i [class.disabled]="images.indexOf(thumbnailImages[thumbnailImages.length - 1]) === images.length - 1"
+                      (click)="rightThumbnailButtonClick()" class="lightboxThumbnailButtons fas fa-caret-right"
+                      style="margin-left:5px;"></i>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+

@@ -1,0 +1,150 @@
+
+.slideShowWrapper {
+  overflow:hidden;
+  width:100%;
+}
+
+.slideWrapper {
+  width: 300%;
+  margin-left: -100%;
+}
+
+.slide {
+  width:33%;
+  display:inline-block;
+  position:relative;
+}
+
+.previousSlide {
+  z-index:2;
+}
+
+.nextSlide {
+  z-index:3;
+}
+
+.currentSlide {
+  z-index: 1;
+}
+
+.currentSlide img:hover {
+  cursor:pointer;
+}
+
+.nextSlide img:hover {
+  cursor: pointer;
+}
+
+.scrollButtons {
+  z-index: 4;
+  width: 90%;
+  top: calc(40%);
+  left: 5%;
+  position: absolute;
+  display: inline-block;
+}
+
+.leftScrollBtn {
+  left: 0;
+}
+
+.rightScrollBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.lightboxImage {
+  width: 33.33%;
+  position:relative;
+}
+
+.lightboxThumbnail {
+  width: 75px;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.topMargin {
+  margin-top:20px;
+}
+
+.lightBoxImageWrapper {
+  width:300%;
+}
+
+.previousImage {
+  margin-left: -66.66%;
+  z-index:1200;
+}
+
+.currentLImage {
+  margin-left: 0;
+  position:relative;
+  z-index:1100;
+}
+
+.nextImage {
+  margin-left:0;
+  z-index:1300;
+}
+
+.lightboxbuttons {
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+  margin: auto 10px auto 10px;
+}
+
+.lightboxText {
+  font-size: 2em;
+  color:white;
+  margin:auto 10px auto 10px;
+}
+
+.lightBoxClose {
+  position:absolute;
+  top: 20px;
+  right: 40px;
+  font-size:2em;
+  cursor:pointer;
+  z-index:1400;
+}
+
+.lightboxThumbnailButtons {
+  font-size: 90px;
+  color: white;
+  cursor:pointer;
+}
+
+.disabled {
+  color:gray;
+  pointer-events:none;
+}
+
+.selectedthumbnail {
+  border: solid 6px #169ea3;
+  cursor:default;
+}
+
+.colorWhite {
+  color: white;
+}
+
+.fontSize12em {
+  font-size: 1.2em;
+}

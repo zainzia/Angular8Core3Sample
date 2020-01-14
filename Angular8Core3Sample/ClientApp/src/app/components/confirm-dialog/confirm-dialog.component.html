@@ -1,0 +1,23 @@
+
+<p-dialog header="{{ confirmDialogParams.DialogHeader }}" [(visible)]="displayDialog" [modal]="true" [responsive]="true"
+          [style]="{width: '450px'}" [minY]="70" [maximizable]="false">
+
+  <div class="row ml-0 mr-0">
+    <div class="col-md-2">
+      <i class="{{ confirmDialogParams.DialogIcon }}" style="font-size:50px"></i>
+    </div>
+
+    <div class="col-md-10 align-self-center">
+      <ng-container *ngTemplateOutlet="confirmDialogParams.DialogBody"></ng-container>
+    </div>
+  </div>
+
+  <p-footer>
+    <button type="button" *ngIf="confirmDialogParams.DialogButton1Label" pButton icon="{{ confirmDialogParams.DialogButton1Icon }}"
+            (click)="DialogOk()" label="{{ confirmDialogParams.DialogButton1Label }}"></button>
+
+    <button type="button" *ngIf="confirmDialogParams.DialogButton2Label" pButton icon="{{ confirmDialogParams.DialogButton2Icon }}"
+            (click)="DialogCancel()" label="{{ confirmDialogParams.DialogButton2Label }}" class="ui-button-secondary"></button>
+  </p-footer>
+
+</p-dialog>

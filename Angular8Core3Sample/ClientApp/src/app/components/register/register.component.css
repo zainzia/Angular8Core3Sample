@@ -1,0 +1,62 @@
+
+
+.topMargin20 {
+  margin-top:20px;
+}
+
+
+.topMargin10 {
+  margin-top: 10px;
+}
+
+
+.width100 {
+  width: 100% !important;
+}
+
+
+.left5{
+  left: .5em;
+}
+
+
+input.form-control {
+  height: 40px;
+}
+
+
+.ui-inputgroup-addon {
+  font-size: 16px;
+}
+
+.height40 {
+  height:40px;
+}
+
+.font16 {
+  font-size:16px;
+}
+
+p-dropdown {
+  width:100%;
+}
+
+p-dropdown.ng-valid[required] > div {
+  border-left: 5px solid #42A948; /* green */
+}
+
+
+p-dropdown.ng-invalid:not(form) > div {
+  border-left: 5px solid #a94442; /* red */
+}
+
+
+p-dropdown.ng-valid[required], p-dropdown.ng-valid.required {
+  border-left: 0 none;
+}
+
+
+p-dropdown.ng-invalid:not(form) {
+  border-left: 0 none;
+}
+

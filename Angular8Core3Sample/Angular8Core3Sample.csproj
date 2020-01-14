@@ -1,0 +1,178 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <AssemblyName>Angular8Core3</AssemblyName>
+    <RootNamespace>Angular8Core3</RootNamespace>
+    <Version>1.7.0</Version>
+    <Authors>Bernardo Lloret-Fuentes</Authors>
+    <Company>Bernardo Lloret-Fuentes</Company>
+    <Product>Angular8Core3Sample</Product>
+    <PackageId>ASP.NET Core 2.1 with Angular 7 Template</PackageId>
+    <Description>Angular8Core3Sample</Description>
+    <PackageProjectUrl>https://github.com/blfuentes/NETCore2_Angular7_Template</PackageProjectUrl>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNet.WebApi.Client" Version="1.1.0" />
+    <PackageReference Include="Mapster" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Stripe.net" Version="34.12.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+    
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Certificates\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Certificates\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Certificates\**" />
+    <None Remove="Certificates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20191212203255_Registration.cs" />
+    <Compile Remove="Migrations\20191212203255_Registration.Designer.cs" />
+    <Compile Remove="Migrations\20191212203650_Registration.cs" />
+    <Compile Remove="Migrations\20191212203650_Registration.Designer.cs" />
+    <Compile Remove="Migrations\20191212205957_Registration.cs" />
+    <Compile Remove="Migrations\20191212205957_Registration.Designer.cs" />
+    <Compile Remove="Migrations\20191212210255_Registration.cs" />
+    <Compile Remove="Migrations\20191212210255_Registration.Designer.cs" />
+    <Compile Remove="Migrations\20191212210359_Registration.cs" />
+    <Compile Remove="Migrations\20191212210359_Registration.Designer.cs" />
+    <Compile Remove="Migrations\20200111164511_PaymentTokenClaim.cs" />
+    <Compile Remove="Migrations\20200111164511_PaymentTokenClaim.Designer.cs" />
+    <Compile Remove="Migrations\20200112004618_AspNetUserTables.cs" />
+    <Compile Remove="Migrations\20200112004618_AspNetUserTables.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\interfaces\GuestLogin.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\ConfirmDialogBinders.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\ConfirmDialogParams.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\ConfirmDialogResult.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\myList.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\myListItem.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\MyListsDialogType.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\myList\AddMyListItem.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\myList\MoveMyListItem.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\RegistrationProfile.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\RegistrationResult.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Home\slideShowImage.ts" />
+    <None Remove="ClientApp\src\app\services\appConfig.service.ts" />
+    <None Remove="ClientApp\src\app\services\auth.interceptor.ts" />
+    <None Remove="ClientApp\src\app\services\auth.response.interceptor.ts" />
+    <None Remove="ClientApp\src\app\services\myLists.service.ts" />
+    <None Remove="ClientApp\src\app\services\register.service.ts" />
+    <None Remove="ClientApp\src\environments\environment.hmr.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\ConfirmDialogBinders.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\ConfirmDialogParams.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\ConfirmDialogResult.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\myList\myList.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\myList\myListItem.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\myList\MyListsDialogType.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\myList\AddMyListItem.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\myList\MoveMyListItem.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\RegistrationProfile.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\RegistrationResult.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Home\slideShowImage.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\appConfig.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\auth.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\auth.response.interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\myLists.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\register.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\config\" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2015</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+
+</Project>

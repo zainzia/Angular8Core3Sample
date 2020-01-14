@@ -1,0 +1,466 @@
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <img src="assets/images/Home/Registration.png" width="1100" height="275">
+      </div>
+    </div>
+
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="row topMargin20" *ngIf="form.errors">
+        <div class="col-md-12 text-center text-danger">
+          <h3>
+            <span class="text-danger" [innerHTML]="getFormErrors()"></span>
+          </h3>
+        </div>
+      </div>
+
+
+      <div class="row topMargin20">
+        <div class="col-md-12 text-center">
+            <i class="fas fa-user-circle fa-10x"></i>
+        </div>
+      </div>
+
+      <div class="row topMargin20">
+        <div class="col-md-12">
+          <p-card [style]="{width: '1100px'}" styleClass="ui-card-shadow pt-3 pb-3">
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h2>Account</h2>
+              </div>
+            </div>
+
+            <div class="row mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+                <div class="form-group">
+                  <div class="ui-inputgroup">
+
+                    <span class="ui-float-label width100">
+                      <input type="text" pInputText class="form-control" formControlName="Username" required>
+                      <label style="left:.5em" for="Username">Username</label>
+                    </span>
+
+                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+
+                  </div>
+
+                  <div *ngIf="hasError('Username')" class="text-danger mt-1">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span class="form-control-feedback ml-2">Please insert a valid Username. Username must be at least 5 characters long.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="text" pInputText class="form-control" formControlName="Email" required>
+                              <label style="left:.5em" for="Email">Email</label>
+                          </span>
+
+                          <span class="ui-inputgroup-addon"><i class="fas fa-at"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('Email')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2">Please insert a valid Email</span>
+                      </div>
+                  
+                  </div>
+
+              </div>
+            </div>
+
+            <div class="row  mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+                  <div class="form-group ">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="password" pInputText class="form-control" formControlName="Password" required>
+                              <label style="left:.5em" for="Password">Password</label>
+                          </span>
+
+                          <span class="ui-inputgroup-addon"><i class="fas fa-key"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('Password')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2 text-justify">
+                              Please insert a Password with at least 8 characters, maximum 16 characters, one Uppercase letter and one Lowercase letter.
+                          </span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="password" pInputText class="form-control" formControlName="ConfirmPassword" required>
+                              <label style="left:.5em" for="ConfirmPassword">Confirm Password</label>
+                          </span>
+
+                          <span class="ui-inputgroup-addon"><i class="fas fa-key"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('ConfirmPassword')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2 text-justify">
+                              Password and ConfirmPassword must be the same
+                          </span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+          </p-card>
+        </div>
+      </div>
+
+
+      <div class="row  mt-5 mb-5">
+        <div class="col-md-12">
+          <p-card [style]="{width: '1100px'}" styleClass="ui-card-shadow pt-3 pb-3">
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                  <h2>Profile</h2>
+              </div>
+            </div>
+
+            <div class="row  mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+                <div class="form-group">
+                    <div class="ui-inputgroup">
+
+                        <span class="ui-float-label width100">
+                            <input type="text" pInputText class="form-control" formControlName="FirstName" required>
+                            <label style="left:.5em" for="FirstName">First Name</label>
+                        </span>
+
+                        <span class="ui-inputgroup-addon"><i class="fas fa-user-circle"></i></span>
+
+                    </div>
+
+
+                    <div *ngIf="hasError('FirstName')" class="text-danger mt-1">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="form-control-feedback ml-2">
+                            Please insert a valid Name
+                        </span>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="text" pInputText class="form-control" formControlName="LastName" required>
+                              <label style="left:.5em" for="LastName">Last Name</label>
+                          </span>
+
+                          <span class="ui-inputgroup-addon"><i class="fas fa-user-circle"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('LastName')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2">
+                              Please insert a valid Name
+                          </span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row  mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+
+                <div class="form-group">
+                  <div class="ui-inputgroup">
+
+                    <span class="ui-float-label width100">
+                      <input type="text" pInputText class="form-control" formControlName="Phone">
+                      <label style="left:.5em" for="Phone">Phone</label>
+                    </span>
+
+                    <span class="ui-inputgroup-addon"><i class="fas fa-phone"></i></span>
+
+                  </div>
+
+                  <div *ngIf="hasError('Phone')" class="text-danger mt-1">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span class="form-control-feedback ml-2">
+                      Please insert a valid Phone Number
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+
+                <div class="form-group">
+                  <div class="ui-inputgroup">
+
+                    <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" filter="true" placeholder="Select a Language"
+                                formControlName="Languages" [style]="{'width':'100%', 'height':'40px'}">
+                    </p-dropdown>
+
+                    <span class="ui-inputgroup-addon"><i class="fas fa-language"></i></span>
+                  </div>
+
+                    <div *ngIf="hasError('Languages')" class="text-danger mt-1">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      <span class="form-control-feedback ml-2">
+                        Please select a Language
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="row  mt-5 mb-5">
+        <div class="col-md-12">
+          <p-card [style]="{width: '1100px'}" styleClass="ui-card-shadow pt-3 pb-3">
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                  <h2>Address</h2>
+              </div>
+            </div>
+
+            <div class="row  mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+
+                <div class="form-group">
+                    <div class="ui-inputgroup">
+
+                        <span class="ui-float-label width100">
+                            <input type="text" pInputText class="form-control" formControlName="Address1" required>
+                            <label style="left:.5em" for="Address1">Address Line 1</label>
+                        </span>
+
+                        
+                        <span class="ui-inputgroup-addon"><i class="fas fa-map-marker-alt"></i></span>
+
+                    </div>
+
+                    <div *ngIf="hasError('Address1')" class="text-danger mt-1">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="form-control-feedback ml-2">
+                            Please insert a valid Address
+                        </span>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="text" pInputText class="form-control" formControlName="Address2">
+                              <label style="left:.5em" for="Address2">Address Line 2</label>
+                          </span>
+                            
+                          <span class="ui-inputgroup-addon"><i class="fas fa-map-marker-alt"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('Address2')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2">
+                              Please insert a valid Address
+                          </span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row  mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="text" pInputText class="form-control" formControlName="PostalCode" required>
+                              <label style="left:.5em" for="PostalCode">Zip / Postal Code</label>
+                          </span>
+
+                          <span class="ui-inputgroup-addon"><i class="fas fa-mail-bulk"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('PostalCode')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2">
+                              Please insert a valid Zip / Postal Code
+                          </span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-md-5">
+
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <span class="ui-float-label width100">
+                              <input type="text" pInputText class="form-control" formControlName="City" required>
+                              <label style="left:.5em" for="City">City</label>
+                          </span>
+
+                          <span class="ui-inputgroup-addon"><i class="fas fa-city"></i></span>
+
+                      </div>
+
+                      <div *ngIf="hasError('City')" class="text-danger mt-1">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          <span class="form-control-feedback ml-2">
+                              Please insert a valid City
+                          </span>
+                      </div>
+
+                  </div>
+              </div>
+            </div>
+
+            <div class="row  mt-5 mb-5">
+              <div class="offset-md-1 col-md-5">
+                <div class="form-group">
+
+                  <div class="ui-inputgroup">
+
+                    <p-dropdown [options]="countries" [(ngModel)]="selectedCountry" filter="true" placeholder="Select a Country"
+                                formControlName="Countries" [style]="{'width':'100%', 'height':'40px'}">
+                    </p-dropdown>
+
+                    <span class="ui-inputgroup-addon"><i class="fas fa-flag"></i></span>
+
+                  </div>
+
+                  <div *ngIf="hasError('Countries')" class="text-danger mt-1">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span class="form-control-feedback ml-2">
+                      Please select a valid Country
+                    </span>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <div class="ui-inputgroup">
+
+                          <div [ngSwitch]="selectedCountry?.Name" class="width100">
+                            <div *ngSwitchCase="'Canada'" class="form-group">
+
+                              <div class="ui-inputgroup">
+                                <p-dropdown [options]="provinces" [(ngModel)]="selectedProvince" filter="true" placeholder="Select a Province"
+                                            formControlName="Provinces" [style]="{'width':'100%', 'height':'40px'}">
+                                </p-dropdown>
+
+                                <span class="ui-inputgroup-addon"><i class="fas fa-globe"></i></span>
+                              </div>
+
+                              <div *ngIf="hasError('Provinces')" class="text-danger mt-1">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                <span class="form-control-feedback ml-2">
+                                  Please select a Province
+                                </span>
+                              </div>
+                            </div>
+
+                            <div *ngSwitchCase="'USA'" class="form-group">
+                              <div class="ui-inputgroup">
+                                <p-dropdown [options]="states" [(ngModel)]="selectedState" filter="true" placeholder="Select a State"
+                                            formControlName="States" [style]="{'width':'100%', 'height':'40px'}">
+                                </p-dropdown>
+
+                                <span class="ui-inputgroup-addon"><i class="fas fa-globe"></i></span>
+
+                              </div>
+
+                              <div *ngIf="hasError('States')" class="text-danger mt-1">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                <span class="form-control-feedback ml-2">
+                                  Please select a State
+                                </span>
+                              </div>
+                            </div>
+
+                            <div *ngSwitchDefault class="form-group width100">
+                                <div class="ui-inputgroup">
+
+                                    <span class="ui-float-label width100">
+                                        <input type="text" pInputText [(ngModel)]="Province2" class="form-control"
+                                                formControlName="Province2" required>
+
+                                        <label style="left:.5em" for="Province2">Province / State</label>
+                                    </span>
+
+                                    <span class="ui-inputgroup-addon"><i class="fas fa-globe"></i></span>
+                                </div>
+
+                                <div *ngIf="hasError('Province2')" class="text-danger mt-1">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    <span class="form-control-feedback ml-2">
+                                        Please insert a valid Province
+                                    </span>
+                                </div>
+                            </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="row  mt-5 mb-5">
+        <div class="col-md-12">
+          <p-card [style]="{width: '1100px'}" styleClass="ui-card-shadow pt-3 pb-3">
+            <div class="row font16">
+              <div class="offset-md-1 col-md-5">
+                <button pButton type="submit" label="Register" [disabled]="form.invalid" class="btn btn-block ui-button-rounded height40">
+                </button>
+              </div>
+
+              <div class="col-md-5">
+                <button pButton type="button" label="Cancel" (click)="cancel()" class="btn btn-block ui-button-rounded ui-button-danger height40">
+                </button>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
